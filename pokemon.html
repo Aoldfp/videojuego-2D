@@ -8,6 +8,11 @@
 	    <link rel="stylesheet" type="text/css" href="./source/css/estilos.css">
 	</head>
 	<body>
+		<!-- Agregamos un ID al elemento audio para controlarlo con JavaScript -->
+		<audio id="background-audio" loop>
+			<source src="./source/audio/champion_red_battle.mp3" type="audio/mpeg">
+			Tu navegador no soporta la etiqueta de audio.
+		</audio>
 
 		<header class="header">
 			<img src="./source/images/upDown.png" class="down upDown" id="down">
@@ -61,7 +66,6 @@
 			<hr class ="line">
 			<p class="container__start--footer">
 				<small>
-					
 					<img src="https://cdn.pixabay.com/photo/2016/07/21/00/38/pokemon-1531648__340.png" width="15" class="pulse">
 				</small>
 			</p>
@@ -198,33 +202,23 @@
 
 		<footer class="footer" id="footer">
 			<div class="footer__container">
-
 				<section id="footer1" class="footer__container--contacto">
-					
-					
 				</section>
 
 				<section id="footer2">
-					
-						
-						</div>
-					</div>
 					<p> Hecho por: </p>
-						</div></p>Vanessa Gissel Hinojosa Morales</p>
-					</div></p>Alexis Gonzales Garcia</p>
-				</div></p>Adolfo Esau Perez Escamilla
-					</p>
+					<p>Vanessa Gissel Hinojosa Morales</p>
+					<p>Alexis Gonzales Garcia</p>
+					<p>Adolfo Esau Perez Escamilla</p>
 				</section>
 
 				<section id="footer3">
 					<p>
 						<a class="footerlinks" href="">
-							
 							<img src="" width="15" id="irGH">
 						</a>
 					</p>
 				</section>
-
 			</div>
 
 			<hr class ="line">
@@ -239,5 +233,23 @@
 	    <script src="./source/js/pokemon.js"></script>
 	    <script src='./source/js/index.js'></script>
 	    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<!-- Agregamos un script inline para manejar la reproducción del audio -->
+		<script>
+			// Esperamos a que el DOM esté completamente cargado
+			document.addEventListener("DOMContentLoaded", function() {
+				// Obtenemos el botón "Empezar" y el elemento de audio
+				const btnStart = document.getElementById("btnStart");
+				const audio = document.getElementById("background-audio");
+
+				// Agregamos un evento de clic al botón "Empezar"
+				btnStart.addEventListener("click", function() {
+					// Intentamos reproducir el audio
+					audio.play().catch(error => {
+						// Si hay un error (por ejemplo, políticas del navegador), lo mostramos en la consola
+						console.log("Error al reproducir el audio:", error);
+					});
+				});
+			});
+		</script>
 	</body>
 </html>
